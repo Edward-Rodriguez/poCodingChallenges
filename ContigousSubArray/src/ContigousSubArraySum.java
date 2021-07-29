@@ -17,11 +17,15 @@ public class ContigousSubArraySum {
 
 	public static void main(String[] args) {
 		Integer arr[] = { 14, 12, 70, 15, 99, 65, 21, 90 };
-		int x = 97;
+		int x = 164;
 
 		Integer[] subArray = findSubArray(arr, x);
-		for (int i = 0; i < subArray.length; i++) {
-			System.out.print(subArray[i] + " ");
+		if (subArray.length == 0)
+			System.out.println("No subarray found with sum of " + x);
+		else {
+			for (int i = 0; i < subArray.length; i++) {
+				System.out.print(subArray[i] + " ");
+			}
 		}
 	}
 
@@ -45,7 +49,10 @@ public class ContigousSubArraySum {
 				tempSum = sum(tempSum, arr[i]);
 			}
 		}
-		return list.toArray(Integer[]::new);
+		if (tempSum == x)
+			return list.toArray(Integer[]::new);
+		else
+			return new Integer[0];
 	}
 
 }
